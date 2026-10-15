@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+  Optional LaunchAgent for The Observatory. See docs/INSTALL.md.
+
+  Install as a LaunchAgent (in ~/Library/LaunchAgents), never as a LaunchDaemon: macOS only grants
+  camera access inside a logged-in GUI session. Enable automatic login on the Mac Mini.
+
+  Replace every /Users/YOU path, and the node path with the output of `nvm which 24`.
+-->
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.elliscode.observatory</string>
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/YOU/.nvm/versions/node/v24.21.0/bin/node</string>
+    <string>--env-file-if-exists=.env</string>
+    <string>server/index.js</string>
+  </array>
+  <key>WorkingDirectory</key>
+  <string>/Users/YOU/git/the-observatory</string>
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/opt/homebrew/bin:/usr/bin:/bin</string>
+  </dict>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+  <key>ProcessType</key>
+  <string>Interactive</string>
+  <key>StandardOutPath</key>
+  <string>/Users/YOU/Library/Logs/the-observatory.log</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/YOU/Library/Logs/the-observatory.log</string>
+</dict>
+</plist>

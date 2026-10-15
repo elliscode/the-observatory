@@ -1,0 +1,19 @@
+{
+  "name": "the-observatory",
+  "version": "0.1.0",
+  "private": true,
+  "description": "The Observatory — Environmental Observation & Cryptographic Randomness Infrastructure",
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env server/index.js",
+    "dev": "node --watch --env-file-if-exists=.env server/index.js",
+    "test": "node --test \"test/**/*.test.js\"",
+    "fallback-image": "node scripts/gen-fallback.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

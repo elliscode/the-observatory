@@ -1,0 +1,9 @@
+# The Observatory — site block for this app only. Append it to the Mac Mini's Caddyfile.
+# Assumes the app runs on the same machine as Caddy, listening on 127.0.0.1:3100
+# (HOST/PORT in .env). Change the upstream if it runs elsewhere or on another port.
+# Caddy obtains the HTTPS certificate and sets X-Forwarded-Proto, which REQUIRE_HTTPS relies on.
+
+observatory.elliscode.com {
+	encode gzip
+	reverse_proxy 127.0.0.1:3100
+}

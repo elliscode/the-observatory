@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Source Administration — The Observatory</title>
+  <meta name="color-scheme" content="dark light">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/css/observatory.css">
+</head>
+<body class="admin">
+  <header class="masthead">
+    <div class="designation">Directorate of Environmental Measurement and Cryptographic Systems</div>
+    <h1>THE OBSERVATORY</h1>
+    <p class="subtitle">Observation Source Registry · Administration</p>
+    <p class="tagline"><a href="/">Return to the operations console</a></p>
+  </header>
+  <main>
+    <section class="panel" id="login" hidden>
+      <header><span class="code">AUTH</span><h2>Administrator Authentication</h2></header>
+      <form id="login-form">
+        <label>Password <input type="password" name="password" autocomplete="current-password" required></label>
+        <div class="actions"><button type="submit">Authenticate</button></div>
+        <div class="msg" id="login-msg" role="status"></div>
+      </form>
+    </section>
+
+    <div id="app" hidden>
+      <section class="panel">
+        <header><span class="code">A</span><h2>Registered Sources</h2></header>
+        <div id="sources"></div>
+        <div class="actions"><button class="secondary" id="logout" type="button">Sign out</button></div>
+      </section>
+
+      <section class="panel">
+        <header><span class="code">+</span><h2 id="form-title">Register a Source</h2></header>
+        <form id="source-form">
+          <div class="grid2">
+            <label>Source type <select name="type" id="type"></select></label>
+            <label>Display name <input name="name" required maxlength="80"></label>
+            <label>Identifier (optional) <input name="id" pattern="[a-z0-9][a-z0-9-]{0,63}" placeholder="auto from name"></label>
+            <label>Enabled <select name="enabled"><option value="true">Enabled</option><option value="false">Disabled</option></select></label>
+          </div>
+          <p class="help" id="adapter-desc"></p>
+          <div class="grid2" id="config-fields"></div>
+          <div class="actions">
+            <button type="submit" id="save">Register source</button>
+            <button type="button" class="secondary" id="cancel" hidden>Cancel edit</button>
+          </div>
+          <div class="msg" id="form-msg" role="status"></div>
+        </form>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="/assets/js/admin.js"></script>
+</body>
+</html>
